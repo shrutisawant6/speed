@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speed</title>
+
+    <script defer src="jquery.min.js"></script>
+    <script defer src="site.js"></script>
+    <link rel="preload" href="images/Galaxy.jpg" as="image">
+    <link rel="preload" href="images/RoadColor.png" as="image">
+
+    <style>
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background: url("images/Galaxy.jpg") no-repeat fixed;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            perspective: 40px;
+            overflow: hidden;
+        }
+
+        .road {
+            width: 300px;
+            height: 100%;
+            margin: 0 auto;
+            position: relative;
+            background: url("images/RoadColor.png");
+            transform: rotateX(40deg);
+            overflow: hidden;
+            border-style: dashed;
+            border-color: wheat;
+            border-width: 10px;
+        }
+
+        .line {
+            position: absolute;
+            left: 50%;
+            margin-left: -5px;
+            width: 10px;
+            height: 100px;
+            background: white;
+        }
+
+        @keyframes road {
+            0% {
+                top: 100%;
+            }
+
+            100% {
+                top: 0;
+                height: 0px;
+            }
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(0.5px, 0.5px) rotate(0.2deg);
+            }
+
+            10% {
+                transform: translate(-0.5px, -1px) rotate(-0.2deg);
+            }
+
+            20% {
+                transform: translate(-2px, -0.5px) rotate(0.2deg);
+            }
+
+            30% {
+                transform: translate(2px, 1px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(0.5px, -0.5px) rotate(0.2deg);
+            }
+
+            50% {
+                transform: translate(-0.5px, 1px) rotate(-0.2deg);
+            }
+
+            60% {
+                transform: translate(-2px, 0px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(2px, 0px) rotate(-0.2deg);
+            }
+
+            80% {
+                transform: translate(-0.5px, -0.5px) rotate(0.2deg);
+            }
+
+            90% {
+                transform: translate(0px, 1px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(0px, -1px) rotate(-0.2deg);
+            }
+        }
+
+        @keyframes sideLight {
+            0% {
+                right: 50%;
+            }
+
+            50% {
+                left: 70%;
+            }
+
+            100% {
+                left: 50%;
+            }
+        }
+
+        p {
+            color: papayawhip;
+            font-family: "Courier";
+            font-size: 45px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: center;
+            animation: type 6s steps(60, end);
+        }
+
+        /* Laptops */
+        @media (min-width: 1024px) and (max-width: 1440px) {
+            p {
+                width: 30em;
+                position: absolute;
+                top: 12%;
+            }
+        }
+
+        /* Mobile devices */
+        @media (max-width: 767px) {
+            p {
+                top: 30%;
+                font-size: 17px;
+                text-align: center;
+            }
+        }
+
+        @keyframes type {
+            from {
+                width: 0;
+            }
+        }
+    </style>
+
+    <link rel="shortcut icon" href="images/favicon-32x32.png">
+
+</head>
+
+<body id="mainBody">
+    <div class="wrapper">
+        <p id="statement">Tap to wake up the beast!</p>
+        <div class="road">
+            <div class="line"></div>
+        </div>
+    </div>
+</body>
+</html>
